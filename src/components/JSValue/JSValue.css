@@ -1,0 +1,58 @@
+
+.jsobject-label {
+  cursor: pointer;
+}
+
+.jsobject-row {
+  border-bottom: 1px solid rgb(240, 240, 240);
+}
+
+.jsobject-row .jsobject-key,
+.jsobject-row .jsobject-value {
+  vertical-align: top;
+}
+
+.jsobject-key {
+  display: inline-block;
+  max-width: 140px;
+  padding-right: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
+  color: rgb(136, 18, 128);
+}
+
+.jsobject-value {
+  display: inline-block;
+}
+
+.jsobject-value_null,
+.jsobject-value_undefined {
+  color: rgb(128, 128, 128);
+  font-style: italic;
+}
+
+.jsobject-value_regex,
+.jsobject-value_string,
+.jsobject-value_symbol {
+  color: rgb(233, 63, 59);
+  white-space: pre;
+}
+
+.jsobject-value_number,
+.jsobject-value_boolean {
+  color: rgb(28, 0, 207);
+}
+
+.jsobject-value_function {
+  font-style: italic;
+}
+
+.jsobject-value_function-keyword {
+  color: rgb(242, 85, 217);
+}
+
+.jsobject-value_identifier {
+  color: rgb(136, 18, 128);
+}

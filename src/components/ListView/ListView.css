@@ -1,0 +1,17 @@
+.list-view {
+  outline: none;
+  cursor: default;
+  user-select: none;
+}
+
+.list-entry {
+  border-bottom: 1px solid rgb(240, 240, 240);
+}
+
+.list-entry:hover:not(.list-entry_selected):not(.effect-entry_activated) {
+  background-color: rgba(56, 121, 217, 0.1);
+}
+
+.list-entry_selected {
+  outline: 1px dotted rgb(33,33,33);
+}

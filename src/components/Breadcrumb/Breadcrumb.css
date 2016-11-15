@@ -1,0 +1,20 @@
+.breadcrumb {
+  font-size: 90%;
+  display: block;
+}
+
+.breadcrumb-element {
+  padding: 5px;
+  background-color: rgb(243, 243, 243);
+  border-left: 1px solid rgb(204, 204, 204);
+  position: relative;
+}
+
+.breadcrumb-element:hover:not(.breadcrumb-element_selected) {
+  background-color: rgb(220, 220, 220);
+}
+
+.breadcrumb-element_selected {
+  background-color: rgb(56, 121, 217);
+  color: white;
+}

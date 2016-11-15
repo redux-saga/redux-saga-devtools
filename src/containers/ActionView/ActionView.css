@@ -1,0 +1,25 @@
+.action-view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.action-view-actions {
+  height: 50%;
+  overflow: auto;
+}
+
+.action-view-reactions {
+  flex: 1;
+  overflow: auto;
+}
+
+.action-view-resize {
+  z-index: 2;
+  background-color: gray;
+  height: 2px;
+  background-color: 2px solid gray;
+  cursor: row-resize;
+  user-select: none;
+}

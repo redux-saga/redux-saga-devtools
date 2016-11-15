@@ -1,0 +1,22 @@
+
+.effect-view {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.effect-view-body {
+  position: absolute;
+  top: 0;
+  bottom: 24px;
+  width: 100%;
+  overflow: auto;
+}
+
+.effect-view-footer {
+  background-color: rgb(243, 243, 243);
+  border-top: 1px solid rgb(204, 204, 204);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

@@ -1,0 +1,14 @@
+.collapse {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  user-select: none;
+}
+/*
+.collapse_hide {
+  visibility: hidden;
+}
+*/
+.collapse_highlighted {
+  color: red;
+}

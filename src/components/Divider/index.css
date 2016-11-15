@@ -1,0 +1,7 @@
+.divider {
+  position: absolute;
+  z-index: 2;
+  opacity: 0;
+  cursor: col-resize;
+  user-select: none;
+}

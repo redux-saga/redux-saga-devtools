@@ -1,0 +1,22 @@
+/*
+.effect-row {}
+*/
+.effect-type {
+  color: rgb(28, 0, 207);
+  margin-right: 5px;
+}
+
+
+.effect_highlighted {
+  background-color: rgb(24, 255, 24)
+}
+
+.effect_animated {
+  animation: highlight 1s ease-out ;
+}
+
+@keyframes highlight
+{
+  from   {background: rgba(44, 255, 24, 0.5);}
+  to     {background: rgba(44, 255, 24, 0);}
+}

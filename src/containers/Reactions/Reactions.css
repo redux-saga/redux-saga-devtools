@@ -1,0 +1,15 @@
+
+.reactions {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.reactions-empty-msg {
+  color: rgb(211, 211, 211);
+  position: absolute;
+  text-align: center;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
