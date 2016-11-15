@@ -6,13 +6,14 @@ A Visual redux-saga monitor
 ## How does it relate to other Redux devtools?
 
 This would of course endup as a browser extension (chrome, firefox). But also intended to release as a themable React Component 
-(or many React Components, one per view) so it can be embedded in other Redux devtools (redux-devtools-extension, reactotron)
+(or many React Components, one per view) so it can be embedded in other Redux devtools (redux-devtools-extension, reactotron or directly inside a React application)
 
 For instance there is no final app or npm package. You can see how it's used to use by consulting the examples. To play with you can start the
 2 included demos.
 
 - `npm run counter` : cancellable counter counter example
-- `shopping-cart`   : Shopping cart example.
+- `npm run shopping-cart`   : Shopping cart example.
+
 
 **Note that the monitor uses the v0.13.0 of redux-saga which includes an improved
 monitor api**. 
