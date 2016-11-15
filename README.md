@@ -43,4 +43,4 @@ Following Todos that I can think of. Ordering doesn't reflect priority.
 - [ ] More modular css to support theming (eg of Styled-Components)
 - [ ] Add tests for UI Components
 - [ ] localize Effect View state (currently shared refs are stored in the Redux store)
-- [ ] (possible) release the saga monitor store + selectors as a separate package.
+- [ ] release the saga monitor store + selectors as a separate package.
