@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { is, asEffect } from 'redux-saga/utils'
-import { Row, Cell } from 'components/Layout'
-import SagaValue from 'components/SagaValue'
+import { Row, Cell } from '../Layout'
+import SagaValue from '../SagaValue'
 import Result from './Result'
 import './Effect.css'
 

@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import EffectView from 'containers/EffectView'
-import { getReactions } from 'store/selectors'
+import EffectView from '../EffectView'
+import { getReactions } from '../../store/selectors'
 import './Reactions.css'
 
 const NoSelectedAction = (

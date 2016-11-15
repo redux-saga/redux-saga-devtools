@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { isParentOf } from 'store/selectors'
-import EffectList from 'containers/EffectList'
+import { isParentOf } from '../../store/selectors'
+import EffectList from '../EffectList'
 import EffectPath from './EffectPath'
 import './EffectView.css'
 

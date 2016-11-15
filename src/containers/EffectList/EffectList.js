@@ -1,14 +1,14 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { matchCurrentAction } from 'store/selectors'
+import { matchCurrentAction } from '../../store/selectors'
 import {
   KEY_ARROW_DOWN,
   KEY_ARROW_UP,
   KEY_ARROW_LEFT,
   KEY_ARROW_RIGHT
-} from 'utils'
-import ListView from 'components/ListView'
-import EffectEntry from 'containers/EffectEntry'
+} from '../../utils'
+import ListView from '../../components/ListView'
+import EffectEntry from '../EffectEntry'
 import './EffectList.css'
 
 class EffectList extends React.Component {

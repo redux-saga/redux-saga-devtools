@@ -34,10 +34,10 @@
   "scripts": {
     "lint": "eslint src",
     "test": "cross-env NODE_PATH=./src babel-node ./test | tap-spec",
-    "compile": "rimraf lib && cross-env NODE_PATH=./src babel -d lib/ src/",
+    "compile": "rimraf lib && babel -d lib/ src/",
     "prepublish": "npm run lint && npm run test && npm run compile",
-    "counter": "cross-env NODE_PATH=./src budo ./examples/cancellable-counter/index.js:build.js --dir ./examples/cancellable-counter --live",
-    "shopping-cart": "cross-env NODE_PATH=./src budo ./examples/shopping-cart/index.js:build.js --dir ./examples/shopping-cart --live"
+    "counter": "budo ./examples/cancellable-counter/index.js:build.js --dir ./examples/cancellable-counter --live",
+    "shopping-cart": "budo ./examples/shopping-cart/index.js:build.js --dir ./examples/shopping-cart --live"
   },
   "browserify": {
     "transform": [

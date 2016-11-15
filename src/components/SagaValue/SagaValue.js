@@ -1,7 +1,7 @@
 import React from 'react'
 import { is, CHANNEL_END } from 'redux-saga/utils'
-import JSValue from 'components/JSValue'
-import SagaRef from 'containers/SagaRef'
+import JSValue from '../JSValue'
+import SagaRef from '../../containers/SagaRef'
 
 export default function SagaValue({value, label, isIdentifier}) {
   if(is.channel(value)) {

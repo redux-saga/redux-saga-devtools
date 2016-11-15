@@ -1,5 +1,5 @@
 import React from 'react'
-import SagaValue from 'components/SagaValue'
+import SagaValue from '../SagaValue'
 
 export default function FunctionCall(fn, args) {
   if(!args.length) {

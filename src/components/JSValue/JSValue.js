@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
-import { trapMouseDown } from 'utils'
-import TreeView from 'components/TreeView'
-import Collapse from 'components/Collapse'
+import { trapMouseDown } from '../../utils'
+import TreeView from '../TreeView'
+import Collapse from '../Collapse'
 import './JSValue.css'
 
 function span(content, className) {

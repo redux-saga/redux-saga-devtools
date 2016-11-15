@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import { Row, Cell } from 'components/Layout'
+import { Row, Cell } from '../Layout'
 import './Breadcrumb.css'
 
 function Breadcrumb({selectedIdx, nodes}) {

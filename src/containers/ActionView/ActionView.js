@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import Divider from 'components/Divider'
-import ActionList from 'containers/ActionList'
-import Reactions from 'containers/Reactions'
-import { SET_SHARED_REF } from 'store/constants'
+import Divider from '../../components/Divider'
+import ActionList from '../ActionList'
+import Reactions from '../Reactions'
+import { SET_SHARED_REF } from '../../store/constants'
 import './ActionView.css'
 
 class ActionView extends React.Component {

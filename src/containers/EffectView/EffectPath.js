@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { getPathToEffect, getEffectName } from 'store/selectors'
+import { getPathToEffect, getEffectName } from '../../store/selectors'
 import { pathHasChanged } from './helpers'
-import Breadcrumb from 'components/Breadcrumb'
+import Breadcrumb from '../../components/Breadcrumb'
 
 class EffectPath extends React.Component {
 

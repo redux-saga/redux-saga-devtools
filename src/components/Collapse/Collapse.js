@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import { IconFold, IconUnfold } from 'components/Icons'
+import { IconFold, IconUnfold } from '../Icons'
 import './Collapse.css'
 
 function Collapse({collapsed, onClick, ...rest}) {

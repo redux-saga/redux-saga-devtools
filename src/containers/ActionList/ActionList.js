@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import ListView from 'components/ListView'
-import { JSObject } from 'components/JSValue'
-import Collapse from 'components/Collapse'
+import ListView from '../../components/ListView'
+import { JSObject } from '../../components/JSValue'
+import Collapse from '../../components/Collapse'
 import './ActionList.css'
 
 class ActionEntry extends React.Component {

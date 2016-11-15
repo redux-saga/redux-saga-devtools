@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { IconPin, IconUnpin } from 'components/Icons'
-import { Row, Cell } from 'components/Layout'
-import Collapse from 'components/Collapse'
-import Effect from 'components/Effect'
+import { IconPin, IconUnpin } from '../../components/Icons'
+import { Row, Cell } from '../../components/Layout'
+import Collapse from '../../components/Collapse'
+import Effect from '../../components/Effect'
 import './EffectEntry.css'
 
 

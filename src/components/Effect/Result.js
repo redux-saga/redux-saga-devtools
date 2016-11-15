@@ -1,11 +1,11 @@
 import React from 'react'
-import { IconPending, IconOk, IconCancel, IconError } from 'components/Icons'
-import { Row, Cell } from 'components/Layout'
-import JSValue from 'components/JSValue'
-import SagaValue from 'components/SagaValue'
+import { IconPending, IconOk, IconCancel, IconError } from '../Icons'
+import { Row, Cell } from '../Layout'
+import JSValue from '../JSValue'
+import SagaValue from '../SagaValue'
 import {
   STATUS_PENDING, STATUS_RESOLVED, STATUS_REJECTED, STATUS_CANCELLED
-} from 'store/constants'
+} from '../../store/constants'
 import './Result.css'
 
 const separator = <span className='result-separator'>→</span>

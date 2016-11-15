@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { Row, Cell } from 'components/Layout'
-import Dock from 'components/Dock'
-import EffectView from 'containers/EffectView'
-import ActionView from 'containers/ActionView'
+import { Row, Cell } from '../../components/Layout'
+import Dock from '../../components/Dock'
+import EffectView from '../EffectView'
+import ActionView from '../ActionView'
 import './SagaMonitorUI.css'
 
 const EFFECT_VIEW = 'Effects'

@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
-import { withCapture } from 'utils'
+import { withCapture } from '../../utils'
 import { connect } from 'react-redux'
-import { SET_SHARED_REF } from 'store/constants'
+import { SET_SHARED_REF } from '../../store/constants'
 import './SagaRef.css'
 
 class SagaRef extends React.Component {
