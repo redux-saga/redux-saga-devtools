@@ -3,7 +3,12 @@ A Visual redux-saga monitor
 
 **this is still a WIP**
 
-You can see how to use by consulting the examples. To play with you can start the
+## How does it relate to other Redux devtools?
+
+This should be of course endup as a browser extension (chrome, firefox). But also intended to release as a themable React Component 
+(or many React Components, one per view) so it can be embedded in other Redux devtools (redux-devtools-extension, reactotron)
+
+For instance there is no final app or npm package. You can see how it's used to use by consulting the examples. To play with you can start the
 2 included demos.
 
 - `npm run counter` : cancellable counter counter example
