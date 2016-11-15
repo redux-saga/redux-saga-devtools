@@ -46,7 +46,7 @@ Following Todos that I can think of. Ordering doesn't reflect priority.
 
 ### Refactoring
 
-- [ ] support theming (eg of Styled-Components)
+- [ ] Use a better css solution (to support theming, publish Monitor components) like Styled-Components
 - [ ] Add tests for UI Components
 - [ ] localize Effect View state (currently shared refs are stored in the Redux store)
 - [ ] release the saga monitor store + selectors as a separate package.
