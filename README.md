@@ -9,7 +9,7 @@ You can see how to use by consulting the examples. To play with you can start th
 - `npm run counter` : cancellable counter counter example
 - `shopping-cart`   : Shopping cart example.
 
-** Note that the monitor uses the v0.13.0 of redux-saga which includes an improved
+**Note that the monitor uses the v0.13.0 of redux-saga which includes an improved
 monitor api**. 
 
 ## Done so far
