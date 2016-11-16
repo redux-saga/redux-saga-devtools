@@ -71,7 +71,9 @@ function renderRejected(error) {
     <div>
       {separator}
       {errorIcon}
-      <JSValue value={error} />
+      <Cell>
+        <JSValue value={error} />
+      </Cell>
     </div>
   )
 }
