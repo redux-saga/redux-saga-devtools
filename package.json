@@ -1,5 +1,5 @@
 {
-  "name": "redux-saga-devtool",
+  "name": "redux-saga-devtools",
   "version": "0.1.0",
   "description": "saga monior and UI for redux-saga",
   "main": "lib/index.js",
@@ -49,7 +49,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yelouafi/redux-saga-devtool.git"
+    "url": "git+https://github.com/yelouafi/redux-saga-devtools.git"
   },
   "keywords": [
     "javascript",
@@ -62,7 +62,7 @@
   "author": "Yassine ELOUAFI <yelouafi@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yelouafi/redux-saga-devtool/issues"
+    "url": "https://github.com/yelouafi/redux-saga-devtools/issues"
   },
-  "homepage": "https://github.com/yelouafi/redux-saga-devtool"
+  "homepage": "https://github.com/yelouafi/redux-saga-devtools"
 }
