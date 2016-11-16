@@ -1,18 +1,20 @@
 import React from 'react'
-import './index.css'
+import styled from 'styled-components'
 
-export function Row({className, children, ...rest}) {
-  return (
-    <div className={`row ${className || ''}`} {...rest}>
-      {children}
-    </div>
-  )
-}
+export const Row = styled.div`
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  width: 100%;
+  height: 100%;
+`
 
-export function Cell({className, children, ...rest}) {
-  return (
-    <div className={`cell ${className || ''}`} {...rest}>
-      {children}
-    </div>
-  )
-}
+export const Cell = styled.div`
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+`

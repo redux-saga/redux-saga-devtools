@@ -1,5 +1,11 @@
 import React, { PropTypes } from 'react'
-import './TreeView.css'
+import styled from 'styled-components'
+
+const TreeViewChildren = styled.div`
+  padding-left: 10px;
+  margin-bottom: 10px;
+`
+
 
 class TreeView extends React.Component {
 
@@ -22,18 +28,18 @@ class TreeView extends React.Component {
     if(children) {
       const childrenStyle = collapsed ?  {display: 'none'} : null
       treeViewChildren = (
-        <div className='tree-view-children' style={childrenStyle} >
+        <TreeViewChildren style={childrenStyle} >
           {typeof children === 'function'
             ? (collapsed ? null : children(collapsed))
             : children
           }
-        </div>
+        </TreeViewChildren>
       )
     }
 
     return (
-      <div className='tree-view'>
-        <div className='tree-view-item'>
+      <div>
+        <div>
           {renderLabel(this.toggleCollapsed, collapsed)}
         </div>
         {treeViewChildren}

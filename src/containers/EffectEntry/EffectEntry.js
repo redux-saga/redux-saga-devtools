@@ -1,10 +1,36 @@
 import React, { PropTypes } from 'react'
+import styled, { css } from 'styled-components'
 import { connect } from 'react-redux'
 import { IconPin, IconUnpin } from '../../components/Icons'
 import { Row, Cell } from '../../components/Layout'
 import Collapse from '../../components/Collapse'
 import Effect from '../../components/Effect'
-import './EffectEntry.css'
+
+
+const EffectEntryContainer = styled.div`
+  padding: 2px 40px 2px 10px;
+  position: relative;
+  
+  ${ p => p.error ? css`
+      background-color: hsl(0, 100%, 97%);
+      border-top: 1px solid hsl(0, 100%, 92%);
+      border-bottom: 1px solid hsl(0, 100%, 92%);
+      margin-top: -1px;
+    ` : ''
+  }
+
+  &:hover .effect-entry-toolbar {
+    visibility: visible;
+  }
+`
+
+const Toolbar = styled.span`
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top:0;
+  visibility: hidden;
+`
 
 
 class EffectEntry extends React.Component {
@@ -28,7 +54,7 @@ class EffectEntry extends React.Component {
     }
 
     return (
-      <div className='effect-entry'>
+      <EffectEntryContainer>
         <Row onMouseDown={this.onSelect}>
           <Cell>
             <Collapse
@@ -43,12 +69,12 @@ class EffectEntry extends React.Component {
         </Row>
         {
           effect.root ? null : (
-            <span className='effect-entry-toolbar'>
+            <Toolbar className='effect-entry-toolbar'>
               {pinNode}
-            </span>
+            </Toolbar>
           )
         }
-      </div>
+      </EffectEntryContainer>
     )
   }
 }

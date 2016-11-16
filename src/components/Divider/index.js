@@ -1,4 +1,11 @@
 import React from 'react'
+import styled from 'styled-components'
+
+export const DividerContainer = styled.div`
+  z-index: 2;
+  user-select: none;
+  ${ p => p.css }
+`
 
 const HORIZONTAL = Symbol('DIVIDER_HORIZONTAL')
 const VERTICAL = Symbol('DIVIDER_VERTICAL')
@@ -58,10 +65,9 @@ class Divider extends React.Component {
 
 
   render() {
-
     return (
-      <div
-        className={this.props.className}
+      <DividerContainer
+        css={this.props.css}
         style={this.props.style}
         onMouseDown={this.onMouseDown}
       />

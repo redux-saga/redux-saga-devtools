@@ -1,9 +1,15 @@
 import React, { PropTypes } from 'react'
+import styled from 'styled-components'
 import { is, asEffect } from 'redux-saga/utils'
 import { Row, Cell } from '../Layout'
 import SagaValue from '../SagaValue'
 import Result from './Result'
-import './Effect.css'
+
+
+const EffectType = styled.span`
+  color: rgb(28, 0, 207);
+  margin-right: 5px;
+`
 
 
 /* eslint-disable no-cond-assign */
@@ -148,9 +154,9 @@ class Effect extends React.Component {
 
 function renderEffect(effect, status, nodes) {
   return (
-    <Row className='effect-row'>
+    <Row>
       {nodes.map((node, idx) => (
-        <Cell key={idx} className='effect-cell'>
+        <Cell key={idx}>
           {node}
         </Cell>
       ))}
@@ -160,12 +166,9 @@ function renderEffect(effect, status, nodes) {
 
 function renderEffectType(type) {
   return (
-    <span className='effect-type' >
-      {type}
-    </span>
+    <EffectType>{type}</EffectType>
   )
 }
-
 
 function renderFuncCall(fn, args) {
   if(!args.length) {
