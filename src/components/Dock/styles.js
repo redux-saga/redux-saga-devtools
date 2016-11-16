@@ -48,6 +48,7 @@ export const DockPanel = styled.div`
   top: 0px;
   width: 40%;
   height: 100%;
+
   ${p => p.resizing ?
       css`
         border-left: 1px solid rgb(200,200,200);
