@@ -44,9 +44,3 @@ Following Todos that I can think of. Ordering doesn't reflect priority.
 - [ ] Add 'time-lined' Effect view (effects on Row, Sagas on columns, useful to debug race conditions)
 - [ ] Show origin of dispatched Actions in the Reactions view (Saga, UI Component (possible?))
 
-### Refactoring
-
-- [ ] Use a better css solution (to support theming, publish Monitor components) like Styled-Components
-- [ ] Add tests for UI Components
-- [ ] localize Effect View state (currently shared refs are stored in the Redux store)
-- [ ] release the saga monitor store + selectors as a separate package.
