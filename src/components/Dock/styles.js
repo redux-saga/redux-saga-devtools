@@ -1,4 +1,14 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+
+export const cssResize = css`
+  position: absolute;
+  opacity: 0;
+  left: -5px;
+  width: 10px;
+  top: 0;
+  height: 100%;
+  cursor: col-resize;
+`
 
 export const DockContainer = styled.div`
   position: fixed;
@@ -38,8 +48,14 @@ export const DockPanel = styled.div`
   top: 0px;
   width: 40%;
   height: 100%;
-  border-left: ${p => p.resizing ? '1px solid rgb(200,200,200)' : 'none' };
-  transition: ${p => p.resizing ? 'width 0.1s ease-out' : 'none'};
+  ${p => p.resizing ?
+      css`
+        border-left: 1px solid rgb(200,200,200);
+      ` :
+      css`
+        transition: width 0.1s ease-out;
+      `
+  }
 `
 
 export const DockPanelBody = styled.div`

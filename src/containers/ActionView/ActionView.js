@@ -1,10 +1,33 @@
 import React, { PropTypes } from 'react'
+import styled, { css } from 'styled-components'
 import { connect } from 'react-redux'
 import Divider from '../../components/Divider'
 import ActionList from '../ActionList'
 import Reactions from '../Reactions'
 import { SET_SHARED_REF } from '../../store/constants'
-import './ActionView.css'
+
+const actionListStyle = {
+  height: '50%',
+  overflow: 'auto'
+}
+
+const ActionViewContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+`
+
+const ReactionListContainer = styled.div`
+  flex: 1;
+  overflow: auto;
+`
+
+const cssResize = css`
+  background-color: gray;
+  height: 2px;
+  cursor: row-resize;
+`
 
 class ActionView extends React.Component {
 
@@ -34,31 +57,31 @@ class ActionView extends React.Component {
   }
 
   render() {
-    let style, topStyle
+    let style, topStyle = actionListStyle
     const topHeight = this.state.topHeight
     if(topHeight) {
-      topStyle = {height: topHeight}
+      topStyle = {...topStyle, height: topHeight}
     }
     style = { cursor: this.state.isResizing ? 'row-resize' : 'default' }
 
     const action = this.props.currentAction
 
     return (
-      <div className='action-view' style={style}>
-        <div className='action-view-actions' style={topStyle} ref={n => this.topNode = n}>
+      <ActionViewContainer style={style}>
+        <div style={topStyle} ref={n => this.topNode = n}>
           <ActionList selectedAction={action} onSelectionChange={this.selectAction} />
         </div>
         <Divider
           orientation={Divider.HORIZONTAL}
-          className='action-view-resize'
+          css={cssResize}
           onResizeStart={this.onResizeStart}
           onResize={this.onResize}
           onResizeEnd={this.onResizeEnd}
         />
-        <div className='action-view-reactions'>
+        <ReactionListContainer>
           <Reactions action={action} />
-        </div>
-      </div>
+        </ReactionListContainer>
+      </ActionViewContainer>
     )
   }
 }

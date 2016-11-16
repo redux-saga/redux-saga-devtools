@@ -1,8 +1,15 @@
 import React, { PropTypes } from 'react'
+import styled from 'styled-components'
 import { withCapture } from '../../utils'
 import { connect } from 'react-redux'
 import { SET_SHARED_REF } from '../../store/constants'
-import './SagaRef.css'
+
+
+const SsagaRefContainer = styled.div`
+  display: inline-block;
+  cursor: pointer;
+  ${ p => p.highlighted ? 'background-color: rgb(24, 255, 24);' : '' }
+`
 
 class SagaRef extends React.Component {
 
@@ -20,15 +27,15 @@ class SagaRef extends React.Component {
 
   render() {
     const { object, sharedRef, children } = this.props
-    const className = `saga-ref ${object === sharedRef ? 'saga-ref_highlighted' : ''}`
+
     return (
-      <div
+      <SsagaRefContainer
         title='Click to highlight all references of this object'
-        className={className}
+        highlighted={object === sharedRef}
         onMouseDown={this.onMouseDown}
       >
         {children}
-      </div>
+      </SsagaRefContainer>
     )
   }
 }

@@ -1,19 +1,36 @@
 import React, { PropTypes } from 'react'
+import styled from 'styled-components'
 import { connect } from 'react-redux'
 import EffectView from '../EffectView'
 import { getReactions } from '../../store/selectors'
-import './Reactions.css'
+
+
+
+const ReactionsContainer = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+`
+
+const EmptyMsg = styled.h1`
+  color: rgb(211, 211, 211);
+  position: absolute;
+  text-align: center;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+`
 
 const NoSelectedAction = (
-  <h1 className='reactions-empty-msg'>
+  <EmptyMsg>
     Select an action from the top panel to view its Reactions
-  </h1>
+  </EmptyMsg>
 )
 
 const NoReactions =  ({action}) => (
-  <h1 className='reactions-empty-msg'>
+  <EmptyMsg>
     No reactions was found to {action.action.type}
-  </h1>
+  </EmptyMsg>
 )
 
 class Reactions extends React.Component {
@@ -22,13 +39,13 @@ class Reactions extends React.Component {
     const { action, reactions } = this.props
 
     return (
-      <div className='reactions'>
+      <ReactionsContainer>
         {
           !action ? NoSelectedAction
           : reactions && reactions.length ? <EffectView rootEffectIds={reactions} />
           : <NoReactions action={action} />
         }
-      </div>
+      </ReactionsContainer>
     )
   }
 }

@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import styled, { css } from 'styled-components'
 import { connect } from 'react-redux'
 import { matchCurrentAction } from '../../store/selectors'
 import {
@@ -9,7 +10,19 @@ import {
 } from '../../utils'
 import ListView from '../../components/ListView'
 import EffectEntry from '../EffectEntry'
-import './EffectList.css'
+
+const EffectListContainer = styled.div`
+  outline: none;
+  cursor: default;
+  user-select: none;
+`
+
+const cssHighlight = css`
+  background-color: rgb(223, 240, 216) !important;
+  border-top: 1px solid rgb(70, 136, 71);
+  border-bottom: 1px solid rgb(70, 136, 71);
+  margin-top: -1px;
+`
 
 class EffectList extends React.Component {
 
@@ -100,7 +113,7 @@ class EffectList extends React.Component {
       elems.push(
         <EffectEntry
           id={prefix + String(effectId)}
-          itemClass={highlighed ? 'effect-list_highlight' : ''}
+          css={highlighed ? cssHighlight : null}
           depth={depth}
           effectId={effectId}
           selected={this.props.selectedEffectId === effectId}
@@ -127,9 +140,9 @@ class EffectList extends React.Component {
     const rootEffectIds = pinnedEffectId < 0 ? this.props.rootEffectIds : [pinnedEffectId]
     this.renderEffectList(rootEffectIds, elems, 0)
     return (
-      <div className='effect-list' tabIndex='0' onKeyDown={this.onKeyDown} >
+      <EffectListContainer tabIndex='0' onKeyDown={this.onKeyDown} >
         <ListView nodes={elems} />
-      </div>
+      </EffectListContainer>
     )
   }
 }

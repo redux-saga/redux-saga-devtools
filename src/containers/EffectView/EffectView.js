@@ -1,10 +1,31 @@
 import React, { PropTypes } from 'react'
+import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { isParentOf } from '../../store/selectors'
 import EffectList from '../EffectList'
 import EffectPath from './EffectPath'
-import './EffectView.css'
 
+const EffectViewContainer = styled.div`
+  position: relative;
+  height: 100%;
+  width: 100%;
+`
+
+const EffectViewBody = styled.section`
+  position: absolute;
+  top: 0;
+  bottom: 24px;
+  width: 100%;
+  overflow: auto;
+`
+
+const EffectViewFooter = styled.section`
+  background-color: rgb(243, 243, 243);
+  border-top: 1px solid rgb(204, 204, 204);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+`
 
 class EffectView extends React.Component {
 
@@ -47,8 +68,8 @@ class EffectView extends React.Component {
     const pinnedEffectId = this.state.pinnedEffectId
 
     return (
-      <div className='effect-view'>
-        <section className='effect-view-body'>
+      <EffectViewContainer>
+        <EffectViewBody>
           <EffectList
             rootEffectIds={rootEffectIds}
             selectedEffectId={selectedEffectId}
@@ -57,15 +78,15 @@ class EffectView extends React.Component {
             onPin={this.handlePin}
             onUnpin={this.handleUnpin}
           />
-        </section>
-        <footer className='effect-view-footer'>
-        <EffectPath
-          rootEffectIds={rootEffectIds}
-          selectedEffectId={selectedEffectId}
-          onSelectionChange={this.handleSelectionChange}
-        />
-        </footer>
-      </div>
+        </EffectViewBody>
+        <EffectViewFooter>
+          <EffectPath
+            rootEffectIds={rootEffectIds}
+            selectedEffectId={selectedEffectId}
+            onSelectionChange={this.handleSelectionChange}
+          />
+        </EffectViewFooter>
+      </EffectViewContainer>
     )
   }
 }
