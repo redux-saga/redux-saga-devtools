@@ -1,58 +1,52 @@
+import styled from 'styled-components'
 
-.jsobject-label {
+export const Label = styled.div`
   cursor: pointer;
-}
+`
 
-.jsobject-row {
+export const Entry = styled.div`
   border-bottom: 1px solid rgb(240, 240, 240);
-}
+`
 
-.jsobject-row .jsobject-key,
-.jsobject-row .jsobject-value {
-  vertical-align: top;
-}
-
-.jsobject-key {
+export const Key = styled.span`
   display: inline-block;
   max-width: 140px;
   padding-right: 10px;
+  vertical-align: top;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: right;
   color: rgb(136, 18, 128);
-}
+`
 
-.jsobject-value {
+export const Value = styled.div`
   display: inline-block;
-}
+  vertical-align: top;
+`
 
-.jsobject-value_null,
-.jsobject-value_undefined {
+export const VNull = styled.span`
   color: rgb(128, 128, 128);
   font-style: italic;
-}
+`
 
-.jsobject-value_regex,
-.jsobject-value_string,
-.jsobject-value_symbol {
+export const VQuoted = styled.span`
   color: rgb(233, 63, 59);
   white-space: pre;
-}
+`
 
-.jsobject-value_number,
-.jsobject-value_boolean {
+export const VUnquoted = styled.span`
   color: rgb(28, 0, 207);
-}
+`
 
-.jsobject-value_function {
+export const VFunction = styled.span`
   font-style: italic;
-}
+`
 
-.jsobject-value_function-keyword {
+export const Keyword = styled.span`
   color: rgb(242, 85, 217);
-}
+`
 
-.jsobject-value_identifier {
+export const Identifier = styled.span`
   color: rgb(136, 18, 128);
-}
+`

@@ -1,12 +1,19 @@
 import React, { PropTypes } from 'react'
+import styled from 'styled-components'
 import { IconFold, IconUnfold } from '../Icons'
-import './Collapse.css'
+
+const CollapseContainer = styled.div`
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  user-select: none;
+`
 
 function Collapse({collapsed, onClick, ...rest}) {
   return (
-    <div className='collapse' onClick={onClick} {...rest}>
+    <CollapseContainer onClick={onClick} {...rest}>
       { collapsed ? <IconUnfold /> : <IconFold /> }
-    </div>
+    </CollapseContainer>
   )
 }
 

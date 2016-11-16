@@ -2,30 +2,31 @@ import React, { PropTypes } from 'react'
 import { trapMouseDown } from '../../utils'
 import TreeView from '../TreeView'
 import Collapse from '../Collapse'
-import './JSValue.css'
+import {
+  Label, Entry, Key, Value,
+  VNull, VQuoted, VUnquoted, VFunction,
+  Keyword, Identifier
+} from './styles'
 
-function span(content, className) {
-  return (
-    <span className={className}>{content}</span>
-  )
-}
+const vnull = <VNull />
+const vfuncKeyword = <Keyword>function</Keyword>
 
 function renderValue(value, isIdentifier, label, onlyPrimitive) {
 
   if(value === null || value === undefined) {
-    return span(String(value), `jsobject-value_${value}`)
+    return vnull
   }
 
   else if(value instanceof RegExp) {
-    return span(value, 'jsobject-value_regex')
+    return <VQuoted>{value}</VQuoted>
   }
 
   const type = typeof value
   if(type === 'string') {
     if(isIdentifier) {
-      return span(value, 'jsobject-value_identifier')
+      return <Identifier>{value}</Identifier>
     } else {
-      return span(`"${value}"`, `jsobject-value_string`)
+      return <VQuoted>{value}</VQuoted>
     }
   }
   if(
@@ -33,21 +34,21 @@ function renderValue(value, isIdentifier, label, onlyPrimitive) {
     type === 'number'   ||
     type === 'boolean'
   ) {
-    return span(`${String(value)}`, `jsobject-value_${type}`)
+    return <VUnquoted>{value}</VUnquoted>
   }
 
   else if(type === 'function') {
     return (
-      <span className='jsobject-value_function'>
-        <span className='jsobject-value_function-keyword'>function </span>
+      <VFunction>
+        {vfuncKeyword}
         {value.name}()
-      </span>
+      </VFunction>
     )
   }
 
   else if(!onlyPrimitive) {
     if(typeof label === 'string') {
-      label = span(label, 'jsobject-value_identifier')
+      <Identifier>{label}</Identifier>
     }
     return (
       <JSObject data={value} preview={label} />
@@ -82,16 +83,16 @@ export function JSObject({data, renderLabel, preview, ignoreLabelClick}) {
   if(!renderLabel) {
     renderLabel = function defaultRenderLabel(onClick, collapsed) {
       return (
-        <div onClick={!ignoreLabelClick ? onClick : null} className='jsobject-label capture'>
+        <Label onClick={!ignoreLabelClick ? onClick : null}>
           <Collapse onClick={ignoreLabelClick ? onClick : null} collapsed={collapsed} />
           {preview || getObjectSummary(data)}
-        </div>
+        </Label>
       )
     }
   }
 
   return (
-    <div className='jsobject' {...trapMouseDown}>
+    <div {...trapMouseDown}>
       <TreeView renderLabel={renderLabel} defaultCollapsed={true} >
       {() => renderObjectDetails(keys, data)}
       </TreeView>
@@ -105,23 +106,23 @@ function renderObjectDetails(keys, data) {
     let node = renderValue(value, false, null, true)
     if(node) {
       return (
-        <div key={key} className='jsobject-row' >
+        <Entry key={key}>
           <Collapse hidden={true} />
-          <span className='jsobject-key' title={key} >{key}:</span>
-          <span className='jsobject-value'>
+          <Key title={key} >{key}:</Key>
+          <Value>
             {node}
-          </span>
-        </div>
+          </Value>
+        </Entry>
       )
     } else {
       const renderRowLabel = (onClick, collapsed) => (
-        <div className='jsobject-row jsobject-label'  onClick={onClick}>
+        <Entry onClick={onClick}>
           <Collapse collapsed={collapsed} />
-          <span className='jsobject-key' title={key}>{key}: </span>
-          <span className='jsobject-value'>
+          <Key title={key}>{key}: </Key>
+          <Value>
             {getObjectSummary(value)}
-          </span>
-        </div>
+          </Value>
+        </Entry>
       )
       return (
         <JSObject key={key} data={value} renderLabel={renderRowLabel} />

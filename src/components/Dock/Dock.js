@@ -1,7 +1,21 @@
 import React from 'react'
 import Divider from '../Divider'
-import './Dock.css'
+import {
+  DockContainer,
+  DockOverlay,
+  DockToggle,
+  DockPanel,
+  DockPanelBody
+} from './styles'
 
+
+const dividerStyle = {
+  left: '-5px',
+  width: '10px',
+  top: 0,
+  height: '100%',
+  cursor: 'col-resize'
+}
 
 class Dock extends React.Component {
 
@@ -40,21 +54,21 @@ class Dock extends React.Component {
     }
 
     return (
-      <div className='dock-container'>
-        <div className={className} style={style}>
-          <div className='dock-overlay'/>
-          <button className='dock-toggle' onClick={this.onToggleDock}>Toggle</button>
+      <DockContainer>
+        <DockPanel resizing={this.state.isResizing} style={style}>
+          <DockOverlay />
+          <DockToggle onClick={this.onToggleDock}>Toggle</DockToggle>
           <Divider
-            className='dock-panel-resize'
+            style={dividerStyle}
             onResizeStart={this.onResizeStart}
             onResize={this.onResize}
             onResizeEnd={this.onResizeEnd}
           />
-          <div className='dock-panel-body' >
+          <DockPanelBody>
             {this.props.children}
-          </div>
-        </div>
-      </div>
+          </DockPanelBody>
+        </DockPanel>
+      </DockContainer>
     )
   }
 }
