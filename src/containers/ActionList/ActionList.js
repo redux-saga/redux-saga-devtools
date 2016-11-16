@@ -3,7 +3,10 @@ import { connect } from 'react-redux'
 import ListView from '../../components/ListView'
 import { JSObject } from '../../components/JSValue'
 import Collapse from '../../components/Collapse'
-import './ActionList.css'
+
+const sagaActionStyle = {
+  color: 'red'
+}
 
 class ActionEntry extends React.Component {
 
@@ -18,7 +21,7 @@ class ActionEntry extends React.Component {
           data={action.action}
           renderLabel={(onClick, collapsed)=> {
             return (
-              <div className={action.isSagaAction ? 'action_saga' : ''}>
+              <div style={action.isSagaAction ? sagaActionStyle : null}>
                 <Collapse
                   onClick={onClick}
                   collapsed={collapsed}

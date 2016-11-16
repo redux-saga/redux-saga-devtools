@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const outline = '1px dotted rgb(33,33,33)'
-const bgHover = 'rgba(56, 121, 217, 0.1)'
+const bgHover = css`background-color: rgba(56, 121, 217, 0.1)`
 
 const ListViewContainer = styled.div`
   outline: none;
@@ -13,10 +13,10 @@ const ListViewContainer = styled.div`
 const ListEntry = styled.div`
   border-bottom: 1px solid rgb(240, 240, 240);
   outline: ${p => p.selected ? outline : 'none'};
-  ${ p => p.itemClass }
+  ${ p => p.css };
 
   &:hover {
-    background-color: {p => p.selected ? null : bgHover}
+    ${p => !p.selected ? bgHover : '' }
   }
 `
 
@@ -37,7 +37,7 @@ class ListView extends React.Component {
             <ListEntry
               key={node.props.id}
               selected={node.props.selected}
-              itemClass={node.props.itemClass}
+              css={node.props.css}
             >
               <div style={style}>
                 {node}
