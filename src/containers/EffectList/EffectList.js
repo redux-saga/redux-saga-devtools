@@ -17,10 +17,10 @@ const EffectListContainer = styled.div`
   user-select: none;
 `
 
-const cssHighlight = css`
-  background-color: rgb(223, 240, 216) !important;
-  border-top: 1px solid rgb(70, 136, 71);
-  border-bottom: 1px solid rgb(70, 136, 71);
+const cssMatchAction = css`
+  background-color: rgb(241, 248, 233);
+  border-top: 1px solid rgb(220, 237, 200);
+  border-bottom: 1px solid rgb(220, 237, 200);
   margin-top: -1px;
 `
 
@@ -106,14 +106,15 @@ class EffectList extends React.Component {
   renderEffectList(effectIds, elems, depth = 0, prefix='eff') {
     return effectIds.forEach((effectId, idx) => {
       this.visuallyOrderedEffects.push(effectId)
+      const effect = this.props.effectsById[effectId]
       const childsEffectsId = this.props.effectsByParentId[effectId]
       const hasChildren = childsEffectsId && childsEffectsId.length
-      const highlighed = matchCurrentAction(this.props.state, effectId)
+      const css = matchCurrentAction(this.props.state, effectId) ? cssMatchAction : null
 
       elems.push(
         <EffectEntry
           id={prefix + String(effectId)}
-          css={highlighed ? cssHighlight : null}
+          css={css}
           depth={depth}
           effectId={effectId}
           selected={this.props.selectedEffectId === effectId}
