@@ -1,12 +1,12 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import SagaMonitorUI from './containers/SagaMonitorUI'
+import SagaMonitorView from './containers/SagaMonitorView'
 import createSagaMonitor from './store/createSagaMonitor'
 
-export function SagaMonitor({monitor}) {
+export function DockableSagaView({monitor}) {
   return (
     <Provider store={monitor.store}>
-      <SagaMonitorUI />
+      <SagaMonitorView />
     </Provider>
   )
 }

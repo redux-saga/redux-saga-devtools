@@ -17,7 +17,7 @@ const ACTION_VIEW = 'Actions'
 const OPTION_WIDTH = 80
 const OPTION_STYLE = { width: OPTION_WIDTH }
 
-class SagaMonitorUI extends React.Component {
+class SagaMonitorView extends React.Component {
 
   state = {
     currentView: EFFECT_VIEW,
@@ -73,7 +73,7 @@ class SagaMonitorUI extends React.Component {
   }
 }
 
-SagaMonitorUI.propTypes = {
+SagaMonitorView.propTypes = {
   rootEffectIds: PropTypes.array.isRequired,
 }
 
@@ -81,4 +81,4 @@ export default connect(
   state => ({
     rootEffectIds: state.rootEffectIds
   })
-)(SagaMonitorUI)
+)(SagaMonitorView)

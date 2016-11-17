@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import { take } from 'redux-saga/effects'
-import { SagaMonitor, createSagaMonitor } from '../../src'
+import { DockableSagaView, createSagaMonitor } from '../../src'
 
 import reducer from './reducers'
 import rootSaga from './sagas'
@@ -19,7 +19,7 @@ const store = createStore(
 )
 sagaMiddleware.run(rootSaga)
 sagaMiddleware.run(function* anotherSaga() {
-  yield take('SOMETHING')
+  yield taake('SOMETHING')
 })
 
 
@@ -28,7 +28,7 @@ ReactDOM.render(
     <Provider store={store}>
       <div style={{margin: 10}}><Counter /></div>
     </Provider>
-    <SagaMonitor monitor={monitor}  />
+    <DockableSagaView monitor={monitor}  />
   </div>,
   document.getElementById('root')
 );
