@@ -143,8 +143,9 @@ class Effect extends React.Component {
     }
 
     else {
-      nodes.push(
-        <SagaValue value={data} label={'Unkown'} />,
+      nodes = nodes.concat(
+        renderEffectType('Unkown'),
+        this.renderResult(status, result, error, winner),
       )
     }
 
@@ -187,7 +188,7 @@ function renderFuncArgs(args) {
   args.forEach((arg, idx) => {
     elements.push(<SagaValue value={arg}/>)
     if(idx < args.length - 1) {
-      elements.push(<span>', '</span>)
+      elements.push(<span>, </span>)
     }
   })
   return elements
