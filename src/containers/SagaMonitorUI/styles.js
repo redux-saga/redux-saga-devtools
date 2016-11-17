@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const SagaMonitorContainer = styled.div`
   font-family: monospace;
-  font-size: 14px;
+  font-size: 13px;
   color: rgb(33,33,33);
   height: 100%;
   width: 100%;
