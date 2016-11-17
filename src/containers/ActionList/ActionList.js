@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import styled from 'styled-components'
 import { connect } from 'react-redux'
 import ListView from '../../components/ListView'
 import { JSObject } from '../../components/JSValue'
@@ -8,6 +9,11 @@ const sagaActionStyle = {
   color: 'red'
 }
 
+const ActionEntryContainer = styled.div`
+  padding: 2px 10px;
+  position: relative;
+`
+
 class ActionEntry extends React.Component {
 
   onSelect = () => this.props.onSelectionChange(this.props.action)
@@ -16,7 +22,7 @@ class ActionEntry extends React.Component {
     const {action } = this.props
 
     return (
-      <div onClick={this.onSelect}>
+      <ActionEntryContainer onClick={this.onSelect}>
         <JSObject
           data={action.action}
           renderLabel={(onClick, collapsed)=> {
@@ -31,7 +37,7 @@ class ActionEntry extends React.Component {
             )
           }}
         />
-      </div>
+      </ActionEntryContainer>
     )
   }
 
