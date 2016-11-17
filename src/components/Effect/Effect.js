@@ -122,7 +122,7 @@ class Effect extends React.Component {
 
     else if((data = asEffect.cancelled(effect.effect))) {
       nodes = nodes.concat(
-        renderEffectType('cancelled?'),
+        renderEffectType('cancelled(?)'),
         this.renderResult(status, result, error, winner)
       )
     }

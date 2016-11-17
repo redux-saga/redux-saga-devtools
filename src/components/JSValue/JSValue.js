@@ -34,7 +34,7 @@ function renderValue(value, isIdentifier, label, onlyPrimitive) {
     type === 'number'   ||
     type === 'boolean'
   ) {
-    return <VUnquoted>{value}</VUnquoted>
+    return <VUnquoted>{String(value)}</VUnquoted>
   }
 
   else if(type === 'function') {
