@@ -29,7 +29,7 @@ const NoSelectedAction = (
 
 const NoReactions =  ({action}) => (
   <EmptyMsg>
-    No reactions was found to {action.action.type}
+    No Reaction was found for {action.action.type}
   </EmptyMsg>
 )
 
