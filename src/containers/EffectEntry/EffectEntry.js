@@ -5,22 +5,18 @@ import { IconPin, IconUnpin } from '../../components/Icons'
 import { Row, Cell } from '../../components/Layout'
 import Collapse from '../../components/Collapse'
 import Effect from '../../components/Effect'
-
+import { STATUS_PENDING } from '../../store/constants'
 
 const EffectEntryContainer = styled.div`
-  padding: 2px 40px 2px 10px;
+  padding: 2px 60px 2px 10px;
   position: relative;
-  
-  ${ p => p.error ? css`
-      background-color: hsl(0, 100%, 97%);
-      border-top: 1px solid hsl(0, 100%, 92%);
-      border-bottom: 1px solid hsl(0, 100%, 92%);
-      margin-top: -1px;
-    ` : ''
-  }
 
   &:hover .effect-entry-toolbar {
     visibility: visible;
+  }
+
+  &:hover .effect-entry-info {
+    visibility: hidden;
   }
 `
 
@@ -30,6 +26,15 @@ const Toolbar = styled.span`
   right: 0;
   top:0;
   visibility: hidden;
+`
+
+const Info = styled.span`
+  position: absolute;
+  right: 2px;
+  top:2px;
+  font-style: italic;
+  font-size: 90%;
+  color: gray;
 `
 
 
@@ -72,6 +77,13 @@ class EffectEntry extends React.Component {
             <Toolbar className='effect-entry-toolbar'>
               {pinNode}
             </Toolbar>
+          )
+        }
+        {
+          effect.status === STATUS_PENDING ? null : (
+            <Info className='effect-entry-info'>
+              {effect.time.toFixed(0)} ms
+            </Info>
           )
         }
       </EffectEntryContainer>
