@@ -16,10 +16,16 @@ function getTime() {
     return Date.now()
 }
 
-export default function createSagaMonitor({time = getTime}={}) {
+export default function createSagaMonitor({time = getTime, dispatch: customDispatch}={}) {
 
-  const store = createStore(rootReducer)
-  const dispatch = store.dispatch
+  let store
+  let dispatch
+  if (typeof customDispatch === 'function') {
+    dispatch = customDispatch
+  } else {
+    store = createStore(rootReducer)
+    dispatch = store.dispatch
+  }
 
   function effectTriggered(effect) {
     dispatch({
