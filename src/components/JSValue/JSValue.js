@@ -26,7 +26,7 @@ function renderValue(value, isIdentifier, label, onlyPrimitive) {
     if(isIdentifier) {
       return <Identifier>{value}</Identifier>
     } else {
-      return <VQuoted>{value}</VQuoted>
+      return <VQuoted>'{value}'</VQuoted>
     }
   }
   if(
