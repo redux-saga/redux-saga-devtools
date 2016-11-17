@@ -10,7 +10,7 @@ This would of course endup as a browser extension (chrome, firefox). But also in
 
 ## Usage
 
-- `npm i --save redux-saga-devtools`
+- `npm i --save-dev redux-saga-devtools`
 
 You can see how it's used by consulting the examples. To play with you can start the
 2 included demos.
