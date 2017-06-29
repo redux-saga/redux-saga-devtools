@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import PropTypes from 'prop-types';
+import React from 'react';
 import styled, { css } from 'styled-components'
 
 const outline = '1px dotted rgb(33,33,33)'

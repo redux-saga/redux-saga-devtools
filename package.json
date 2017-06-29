@@ -25,6 +25,7 @@
     "tape": "^4.6.2"
   },
   "dependencies": {
+    "prop-types": "^15.5.10",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "styled-components": "^1.0.11"
