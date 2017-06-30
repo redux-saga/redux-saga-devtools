@@ -1,6 +1,6 @@
 {
   "name": "redux-saga-devtools",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Monitor and UI for redux-saga",
   "main": "lib/index.js",
   "devDependencies": {
