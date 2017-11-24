@@ -37,7 +37,7 @@ class SagaMonitorView extends React.Component {
       case ACTION_VIEW:
         return <ActionView />
       default:
-        return 'Unkown View!'
+        return 'Unknown View!'
     }
   }
 

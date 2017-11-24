@@ -145,7 +145,7 @@ class Effect extends React.Component {
 
     else {
       nodes = nodes.concat(
-        renderEffectType('Unkown'),
+        renderEffectType('Unknown'),
         this.renderResult(status, result, error, winner),
       )
     }
