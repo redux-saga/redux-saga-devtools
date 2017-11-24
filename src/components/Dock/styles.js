@@ -36,7 +36,7 @@ export const DockToggle = styled.button`
   top: 0;
   right: 0;
   z-index: 1;
-  margin: 5px;
+  margin: 2px;
 `
 
 export const DockPanel = styled.div`
