@@ -13,7 +13,7 @@ This would of course endup as a browser extension (chrome, firefox). But also in
 - `npm i --save-dev redux-saga-devtools`
 
 You can see how it's used by consulting the examples. To play with you can start the
-2 included demos.
+2 included demos. The `F9` key toggles the dock open and closed. 
 
 - `npm run counter` : cancellable counter counter example
 - `npm run shopping-cart`   : Shopping cart example.
