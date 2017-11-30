@@ -28,7 +28,7 @@
     "prop-types": "^15.5.10",
     "react": "^15.3.2 || ^16.0.0",
     "react-dom": "^15.3.2 || ^16.0.0",
-    "styled-components": "^1.0.11"
+    "styled-components": "^2.2.4"
   },
   "peerDependecies": {
     "redux-saga": "^0.15.6"
