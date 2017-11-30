@@ -87,7 +87,7 @@ class ActionView extends React.Component {
   }
 }
 
-ActionView.PropTypes = {
+ActionView.propTypes = {
   // Injected by Redux
   currentAction: PropTypes.object,
   setCurrentAction: PropTypes.func.isRequired,

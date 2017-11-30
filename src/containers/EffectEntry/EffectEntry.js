@@ -92,7 +92,7 @@ class EffectEntry extends React.Component {
   }
 }
 
-EffectEntry.PropTypes = {
+EffectEntry.propTypes = {
   // passed by the parent component
   effectId: PropTypes.number.isRequired,
   selected: PropTypes.bool.isRequired,

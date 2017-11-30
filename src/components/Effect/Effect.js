@@ -195,7 +195,7 @@ function renderFuncArgs(args) {
   return elements
 }
 
-Effect.PropTypes = {
+Effect.propTypes = {
   effect: PropTypes.object.isRequired,
 }
 
