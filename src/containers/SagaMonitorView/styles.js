@@ -5,7 +5,8 @@ export const SagaMonitorContainer = styled.div`
   font-size: 13px;
   color: rgb(33,33,33);
   height: 100%;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
 
   & * {
     box-sizing: border-box;
@@ -20,6 +21,7 @@ export const SagaMonitorHeader = styled.section`
   background-color: rgb(243, 243, 243);
   border-bottom: 1px solid rgb(204, 204, 204);
   position: relative;
+  flex: none;
 
   & hr {
     background-color: rgb(56, 121, 217);
@@ -44,8 +46,8 @@ export const SagaMonitorOption = styled.div`
 `
 
 export const SagaMonitorBody = styled.section`
-  position: absolute;
-  top: 30px;
-  bottom: 0;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  margin-top: 10px;
 `
