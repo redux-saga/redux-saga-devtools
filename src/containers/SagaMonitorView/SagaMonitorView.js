@@ -72,13 +72,11 @@ class SagaMonitorView extends React.Component {
 }
 
 SagaMonitorView.propTypes = {
-  rootEffectIds: PropTypes.array.isRequired,
-  useDock: PropTypes.boolean
+  rootEffectIds: PropTypes.array.isRequired
 }
 
 export default connect(
   (state, ownProps) => ({
-    rootEffectIds: state.rootEffectIds,
-    useDock: ownProps.useDock
+    rootEffectIds: state.rootEffectIds
   })
 )(SagaMonitorView)
