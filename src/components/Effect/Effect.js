@@ -23,21 +23,21 @@ class Effect extends React.Component {
   }
 
   render() {
-    const {effect} = this.props
+    const { effect } = this.props
     const { status, result, error, winner } = effect
 
 
     let nodes = []
     let data
 
-    if(effect.root) {
+    if (effect.root) {
       nodes = nodes.concat(
         renderFuncCall(effect.effect.saga, effect.effect.args),
         this.renderResult(status, result, error)
       )
     }
 
-    else if((data = asEffect.take(effect.effect))) {
+    else if ((data = asEffect.take(effect.effect))) {
       nodes = nodes.concat(
         renderEffectType('take'),
         <SagaValue value={data.pattern || data.channel} isIdentifier={true} />,
@@ -45,14 +45,14 @@ class Effect extends React.Component {
       )
     }
 
-    else if((data = asEffect.put(effect.effect))) {
+    else if ((data = asEffect.put(effect.effect))) {
       nodes = nodes.concat(
         renderEffectType('put'),
         <SagaValue value={data.channel || data.action} label={data.action.type} isIdentifier={true} />
       )
     }
 
-    else if((data = asEffect.call(effect.effect))) {
+    else if ((data = asEffect.call(effect.effect))) {
       nodes = nodes.concat(
         renderEffectType('call'),
         renderFuncCall(data.fn, data.args),
@@ -60,7 +60,7 @@ class Effect extends React.Component {
       )
     }
 
-    else if((data = asEffect.cps(effect.effect))) {
+    else if ((data = asEffect.cps(effect.effect))) {
       nodes = nodes.concat(
         renderEffectType('cps'),
         renderFuncCall(data.fn, data.args),
@@ -68,15 +68,21 @@ class Effect extends React.Component {
       )
     }
 
-    else if((data = asEffect.fork(effect.effect))) {
+    else if ((data = asEffect.fork(effect.effect))) {
       nodes = nodes.concat(
         renderEffectType('fork'),
         renderFuncCall(data.fn, data.args),
         this.renderResult(status, result, error, winner)
       )
     }
-
-    else if((data = asEffect.join(effect.effect))) {
+    else if ((data = asEffect.getContext(effect.effect))) {
+      nodes = nodes.concat(
+        renderEffectType('getContext'),
+        <SagaValue value={data} isIdentifier={true} />,
+        this.renderResult(status, result, error, winner)
+      )
+    }
+    else if ((data = asEffect.join(effect.effect))) {
       nodes = nodes.concat(
         renderEffectType('join'),
         <SagaValue value={data} isIdentifier={true} label={data.name} />,
@@ -84,28 +90,28 @@ class Effect extends React.Component {
       )
     }
 
-    else if((data = asEffect.cancel(effect.effect))) {
+    else if ((data = asEffect.cancel(effect.effect))) {
       nodes = nodes.concat(
         renderEffectType('cancel'),
         <SagaValue value={data} isIdentifier={true} label={data.name} />,
       )
     }
 
-    else if(is.array(effect.effect)) {
+    else if (is.array(effect.effect)) {
       nodes = nodes.concat(
         renderEffectType('parallel'),
         this.renderResult(status, result, error, winner)
       )
     }
 
-    else if((data = asEffect.race(effect.effect))) {
+    else if ((data = asEffect.race(effect.effect))) {
       nodes = nodes.concat(
         renderEffectType('race'),
         this.renderResult(status, result, error, winner)
       )
     }
 
-    else if((data = asEffect.select(effect.effect))) {
+    else if ((data = asEffect.select(effect.effect))) {
       nodes = nodes.concat(
         renderEffectType('select'),
         renderFuncCall(data.selector, data.args),
@@ -113,7 +119,7 @@ class Effect extends React.Component {
       )
     }
 
-    else if((data = asEffect.actionChannel(effect.effect))) {
+    else if ((data = asEffect.actionChannel(effect.effect))) {
       nodes = nodes.concat(
         renderEffectType('actionChannel'),
         <SagaValue value={data.action} isIdentifier={true} />,
@@ -121,14 +127,14 @@ class Effect extends React.Component {
       )
     }
 
-    else if((data = asEffect.cancelled(effect.effect))) {
+    else if ((data = asEffect.cancelled(effect.effect))) {
       nodes = nodes.concat(
         renderEffectType('cancelled(?)'),
         this.renderResult(status, result, error, winner)
       )
     }
 
-    else if((data = asEffect.flush(effect.effect))) {
+    else if ((data = asEffect.flush(effect.effect))) {
       nodes = nodes.concat(
         renderEffectType('flush'),
         renderFuncCall(data),
@@ -136,7 +142,7 @@ class Effect extends React.Component {
       )
     }
 
-    else if(is.iterator(effect.effect)) {
+    else if (is.iterator(effect.effect)) {
       nodes = nodes.concat(
         renderEffectType(effect.effect.name),
         this.renderResult(status, result, error, winner)
@@ -173,7 +179,7 @@ function renderEffectType(type) {
 }
 
 function renderFuncCall(fn, args) {
-  if(!args.length) {
+  if (!args.length) {
     return <span>{fn.name}()</span>
   }
 
@@ -187,8 +193,8 @@ function renderFuncCall(fn, args) {
 function renderFuncArgs(args) {
   const elements = []
   args.forEach((arg, idx) => {
-    elements.push(<SagaValue value={arg}/>)
-    if(idx < args.length - 1) {
+    elements.push(<SagaValue value={arg} />)
+    if (idx < args.length - 1) {
       elements.push(<span>, </span>)
     }
   })
