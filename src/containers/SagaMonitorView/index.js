@@ -1,2 +1,3 @@
 import SagaMonitorView from './SagaMonitorView'
-export default SagaMonitorView
+export { DockedSagaMonitorView } from "./DockedSagaMonitorView";
+export default SagaMonitorView;

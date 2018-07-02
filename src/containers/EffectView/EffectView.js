@@ -7,25 +7,22 @@ import EffectList from '../EffectList'
 import EffectPath from './EffectPath'
 
 const EffectViewContainer = styled.div`
-  position: relative;
-  height: 100%;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: auto;
 `
 
 const EffectViewBody = styled.section`
-  position: absolute;
-  top: 0;
-  bottom: 24px;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: auto;
   overflow: auto;
 `
 
 const EffectViewFooter = styled.section`
   background-color: rgb(243, 243, 243);
   border-top: 1px solid rgb(204, 204, 204);
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+  flex: none;
 `
 
 class EffectView extends React.Component {
@@ -34,7 +31,7 @@ class EffectView extends React.Component {
 
   handleSelectionChange = effectId => {
     const pinnedEffectId = this.state.pinnedEffectId
-    if(
+    if (
       pinnedEffectId >= 0 &&
       isParentOf(this.props.effectsById, effectId, pinnedEffectId)
     ) {
@@ -52,13 +49,13 @@ class EffectView extends React.Component {
 
   handlePin = effectId => {
     this.setState({
-        pinnedEffectId: effectId
+      pinnedEffectId: effectId
     })
   }
 
   handleUnpin = () => {
     this.setState({
-        pinnedEffectId: -1
+      pinnedEffectId: -1
     })
   }
 

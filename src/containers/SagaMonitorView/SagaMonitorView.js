@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux'
 import { Row, Cell } from '../../components/Layout'
-import Dock from '../../components/Dock'
 import EffectView from '../EffectView'
 import ActionView from '../ActionView'
 import {
@@ -56,30 +55,28 @@ class SagaMonitorView extends React.Component {
 
   render() {
     return (
-      <Dock>
-        <SagaMonitorContainer>
-          <SagaMonitorHeader>
-            <Row>
-              {this.renderViewOption(EFFECT_VIEW)}
-              {this.renderViewOption(ACTION_VIEW)}
-              <hr style={{ width: OPTION_WIDTH, left: OPTION_WIDTH * this.state.currentViewIndex }} />
-            </Row>
-          </SagaMonitorHeader>
-          <SagaMonitorBody>
-            {this.renderCurrentView()}
-          </SagaMonitorBody>
-        </SagaMonitorContainer>
-      </Dock>
-    )
+      <SagaMonitorContainer>
+        <SagaMonitorHeader>
+          <Row>
+            {this.renderViewOption(EFFECT_VIEW)}
+            {this.renderViewOption(ACTION_VIEW)}
+            <hr style={{ width: OPTION_WIDTH, left: OPTION_WIDTH * this.state.currentViewIndex }} />
+          </Row>
+        </SagaMonitorHeader>
+        <SagaMonitorBody>
+          {this.renderCurrentView()}
+        </SagaMonitorBody>
+      </SagaMonitorContainer>
+    );
   }
 }
 
 SagaMonitorView.propTypes = {
-  rootEffectIds: PropTypes.array.isRequired,
+  rootEffectIds: PropTypes.array.isRequired
 }
 
 export default connect(
-  state => ({
+  (state, ownProps) => ({
     rootEffectIds: state.rootEffectIds
   })
 )(SagaMonitorView)
