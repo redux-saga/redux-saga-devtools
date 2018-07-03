@@ -8,7 +8,7 @@ import Result from './Result'
 
 
 const EffectType = styled.span`
-  color: rgb(28, 0, 207);
+  color: ${props => props.theme.effectType};
   margin-right: 5px;
 `
 

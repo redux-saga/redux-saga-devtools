@@ -16,29 +16,29 @@ const BreadcrumbContainer = styled.div`
 const BreadcrumbElement = styled.div`
   cursor: pointer;
   padding: 5px;
-  color: ${ ifSelected('white') };
-  background-color: ${ ifSelected('rgb(56, 121, 217)', 'rgb(243, 243, 243)') };
+  color: ${ ifSelected('white')};
+  background-color: ${ ifSelected(props => props.theme.selectedHeader, props => props.theme.headerBackground)};
   border-left: 1px solid rgb(204, 204, 204);
   position: relative;
 
   &:hover {
-    background-color: ${ ifSelected('rgb(56, 121, 217)', 'rgb(220, 220, 220)') };
+    background-color: ${ ifSelected('rgb(56, 121, 217)', 'rgb(220, 220, 220)')};
   }
 `
 
-function Breadcrumb({selectedIdx, nodes}) {
+function Breadcrumb({ selectedIdx, nodes }) {
   return (
     <Row>
       <BreadcrumbContainer>
-      {
-        nodes.map((node, idx) => (
+        {
+          nodes.map((node, idx) => (
             <Cell key={idx}>
               <BreadcrumbElement selected={idx === selectedIdx}>
                 {node}
               </BreadcrumbElement>
             </Cell>
-        ))
-      }
+          ))
+        }
       </BreadcrumbContainer>
     </Row>
   )

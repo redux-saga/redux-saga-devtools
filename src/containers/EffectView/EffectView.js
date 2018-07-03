@@ -20,8 +20,8 @@ const EffectViewBody = styled.section`
 `
 
 const EffectViewFooter = styled.section`
-  background-color: rgb(243, 243, 243);
-  border-top: 1px solid rgb(204, 204, 204);
+  background-color: ${props => props.theme.headerBackground}
+  border-top: 1px solid ${props => props.theme.border};
   flex: none;
 `
 

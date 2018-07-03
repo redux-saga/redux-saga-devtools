@@ -32,25 +32,25 @@ const separator = <span style={styles.separator}>→</span>
 
 const pendingIcon = (
   <Cell style={styles.pending}>
-    <IconPending />
+    ⌛
   </Cell>
 )
 
 const winnerIcon = (
   <Cell style={styles.winner}>
-    <IconOk />
+    ✔
   </Cell>
 )
 
 const errorIcon = (
   <Cell style={styles.error}>
-    <IconError />
+    ⚠
   </Cell>
 )
 
 const cancelIcon = (
   <Cell style={styles.cancelled}>
-    <IconCancel />
+    🗙
   </Cell>
 )
 
@@ -60,7 +60,7 @@ function renderResolved(result, winner) {
       {separator}
       {winner ? winnerIcon : null}
       <Cell>
-        <SagaValue value={result}/>
+        <SagaValue value={result} />
       </Cell>
     </div>
   )
@@ -79,7 +79,7 @@ function renderRejected(error) {
 }
 
 
-export default function Result({status, result, error, winner}) {
+export default function Result({ status, result, error, winner }) {
   switch (status) {
     case STATUS_PENDING:
       return pendingIcon
