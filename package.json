@@ -28,6 +28,7 @@
     "prop-types": "^15.5.10",
     "react": "^15.3.2 || ^16.0.0",
     "react-dom": "^15.3.2 || ^16.0.0",
+    "react-virtualized": "^9.20.0",
     "styled-components": "^2.2.4"
   },
   "peerDependecies": {

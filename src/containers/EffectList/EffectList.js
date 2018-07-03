@@ -16,6 +16,9 @@ const EffectListContainer = styled.div`
   outline: none;
   cursor: default;
   user-select: none;
+  display: flex;
+  flex-direction: column;
+  flex: auto;
 `
 
 const cssMatchAction = css`
@@ -46,24 +49,24 @@ class EffectList extends React.Component {
 
 
   onKeyDown = e => {
-    if(e.which === KEY_ARROW_DOWN) {
+    if (e.which === KEY_ARROW_DOWN) {
       this.selectDown(this.props.selectedEffectId)
       e.preventDefault()
-    } else if(e.which === KEY_ARROW_UP) {
+    } else if (e.which === KEY_ARROW_UP) {
       this.selectUp(this.props.selectedEffectId)
       e.preventDefault()
-    } else if(e.which === KEY_ARROW_LEFT) {
+    } else if (e.which === KEY_ARROW_LEFT) {
       this.selectLeft(this.props.selectedEffectId)
       e.preventDefault()
     }
-    else if(e.which === KEY_ARROW_RIGHT) {
+    else if (e.which === KEY_ARROW_RIGHT) {
       this.selectRight(this.props.selectedEffectId)
       e.preventDefault()
     }
   }
 
   selectLeft = effectId => {
-    if(!this.isCollapsed(effectId) && this.props.effectsByParentId[effectId]) {
+    if (!this.isCollapsed(effectId) && this.props.effectsByParentId[effectId]) {
       this.collapseEffect(effectId, true)
     } else {
       const isTop = (
@@ -71,7 +74,7 @@ class EffectList extends React.Component {
         this.props.rootEffectIds.indexOf(effectId) >= 0
       )
 
-      if(!isTop) {
+      if (!isTop) {
         const parentId = this.props.effectsById[effectId].parentEffectId
         this.props.onSelectionChange(parentId)
       }
@@ -79,10 +82,10 @@ class EffectList extends React.Component {
   }
 
   selectRight = effectId => {
-    if(this.isCollapsed(effectId)) {
+    if (this.isCollapsed(effectId)) {
       this.collapseEffect(effectId, false)
     } else {
-      if(this.props.effectsByParentId[effectId]) {
+      if (this.props.effectsByParentId[effectId]) {
         this.selectDown(effectId)
       }
     }
@@ -90,21 +93,21 @@ class EffectList extends React.Component {
 
   selectUp = effectId => {
     const idx = this.visuallyOrderedEffects.indexOf(effectId)
-    if(idx > 0) {
-      const prevEffect = this.visuallyOrderedEffects[idx-1]
+    if (idx > 0) {
+      const prevEffect = this.visuallyOrderedEffects[idx - 1]
       this.props.onSelectionChange(prevEffect)
     }
   }
 
   selectDown = (effectId, onlyChild) => {
     const idx = this.visuallyOrderedEffects.indexOf(effectId)
-    if(idx < this.visuallyOrderedEffects.length - 1) {
-      const nextEffect = this.visuallyOrderedEffects[idx+1]
+    if (idx < this.visuallyOrderedEffects.length - 1) {
+      const nextEffect = this.visuallyOrderedEffects[idx + 1]
       this.props.onSelectionChange(nextEffect)
     }
   }
 
-  renderEffectList(effectIds, elems, depth = 0, prefix='eff') {
+  renderEffectList(effectIds, elems, depth = 0, prefix = 'eff') {
     return effectIds.forEach((effectId, idx) => {
       this.visuallyOrderedEffects.push(effectId)
       const effect = this.props.effectsById[effectId]
@@ -128,7 +131,7 @@ class EffectList extends React.Component {
         />
       )
 
-      if(!this.isCollapsed(effectId) && hasChildren) {
+      if (!this.isCollapsed(effectId) && hasChildren) {
         this.renderEffectList(childsEffectsId, elems, depth + 1, prefix)
       }
     })
@@ -159,7 +162,7 @@ EffectList.propTypes = {
   effectsByParentId: PropTypes.object.isRequired,
 }
 
-export default connect( state => ({
+export default connect(state => ({
   state: state,
   effectsById: state.effectsById,
   effectsByParentId: state.effectsByParentId
