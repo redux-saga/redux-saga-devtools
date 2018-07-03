@@ -5,7 +5,6 @@ export const Label = styled.div`
 `
 
 export const Entry = styled.div`
-  border-bottom: 1px solid rgb(240, 240, 240);
 `
 
 export const Key = styled.span`
@@ -17,7 +16,7 @@ export const Key = styled.span`
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: right;
-  color: rgb(136, 18, 128);
+  color: ${props => props.theme.identifier};
 `
 
 export const Value = styled.div`
@@ -36,7 +35,7 @@ export const VQuoted = styled.span`
 `
 
 export const VUnquoted = styled.span`
-  color: rgb(28, 0, 207);
+  color: ${props => props.theme.unquoted};
 `
 
 export const VFunction = styled.span`
@@ -48,5 +47,5 @@ export const Keyword = styled.span`
 `
 
 export const Identifier = styled.span`
-  color: rgb(136, 18, 128);
+  color: ${props => props.theme.identifier};
 `

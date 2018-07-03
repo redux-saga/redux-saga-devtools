@@ -12,12 +12,13 @@ const ListViewContainer = styled.div`
 `
 
 const ListEntry = styled.div`
-  border-bottom: 1px solid rgb(240, 240, 240);
+  border-bottom: 1px solid ${props => props.theme.border};
   outline: ${p => p.selected ? outline : 'none'};
-  ${ p => p.css };
+  ${ p => p.selected ? bgHover : ''}
+  ${ p => p.css};
 
   &:hover {
-    ${p => !p.selected ? bgHover : '' }
+    ${p => !p.selected ? bgHover : ''}
   }
 `
 
@@ -30,7 +31,7 @@ class ListView extends React.Component {
 
     return (
       <ListViewContainer>
-        { this.props.nodes.map(node => {
+        {this.props.nodes.map(node => {
           const depth = node.props.depth
           const style = depth ? { marginLeft: depth * indent } : null
 
@@ -45,7 +46,7 @@ class ListView extends React.Component {
               </div>
             </ListEntry>
           )
-        }) }
+        })}
       </ListViewContainer>
     )
   }
