@@ -14,6 +14,7 @@ const ListViewContainer = styled.div`
 const ListEntry = styled.div`
   border-bottom: 1px solid ${props => props.theme.border};
   outline: ${p => p.selected ? outline : 'none'};
+  ${ p => p.selected ? bgHover : ''}
   ${ p => p.css};
 
   &:hover {
