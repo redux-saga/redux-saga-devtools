@@ -160,8 +160,7 @@ class Effect extends React.Component {
 
     else if (is.array(effect.effect)) {
       nodes = nodes.concat(
-        renderEffectType('parallel'),
-        this.renderResult(status, result, error, winner)
+        renderEffectType('all')
       )
     }
 
