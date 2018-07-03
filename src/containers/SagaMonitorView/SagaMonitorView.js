@@ -25,7 +25,10 @@ const lightTheme = {
   effectType: 'rgb(28,0,207)',
   headerBackground: 'rgb(243, 243, 243)',
   headerHighlight: 'rgb(220, 220, 220)',
+  footerBackground: 'rgb(243, 243, 243)',
+  footerHighlight: 'rgb(220, 220, 220)',
   identifier: 'rgb(136,18,128)',
+  selectedBreadcrumb: 'rgb(56, 121, 217)',
   selectedHeader: 'rgb(56, 121, 217)',
   unquoted: 'rgb(28, 0, 207)'
 
@@ -38,7 +41,10 @@ const darkTheme = {
   effectType: 'rgb(154, 127, 213)',
   headerBackground: 'rgb(75,75,75)',
   headerHighlight: 'rgb(105,105,105)',
+  footerBackground: 'rgb(75,75,75)',
+  footerHighlight: 'rgb(105,105,105)',
   identifier: 'rgb(242, 151, 102)',
+  selectedBreadcrumb: 'rgb(242, 151, 102)',
   selectedHeader: 'rgb(242, 151, 102)',
   unquoted: 'rgb(189, 198, 207)'
 }

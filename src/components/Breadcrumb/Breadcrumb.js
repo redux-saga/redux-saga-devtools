@@ -17,12 +17,12 @@ const BreadcrumbElement = styled.div`
   cursor: pointer;
   padding: 5px;
   color: ${ ifSelected('white')};
-  background-color: ${ ifSelected(props => props.theme.selectedHeader, props => props.theme.headerBackground)};
+  background-color: ${ ifSelected(props => props.theme.selectedBreadcrumb, props => props.theme.footerBackground)};
   border-left: 1px solid rgb(204, 204, 204);
   position: relative;
 
   &:hover {
-    background-color: ${ ifSelected('rgb(56, 121, 217)', 'rgb(220, 220, 220)')};
+    background-color: ${ ifSelected(props => props.theme.selectedBreadcrumb, props => props.theme.footerHighlight)};
   }
 `
 
