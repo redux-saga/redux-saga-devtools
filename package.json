@@ -10,7 +10,6 @@
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
     "@babel/preset-react": "^7.8.3",
-    "@babel/preset-typescript": "^7.8.3",
     "@types/redux-saga": "^0.10.5",
     "babel-eslint": "^8.0.2",
     "babelify": "^10.0.0",
@@ -23,8 +22,7 @@
     "redux-saga": "^0.16.0",
     "regenerator-runtime": "^0.13.3",
     "rimraf": "^2.5.4",
-    "tap-spec": "^4.1.1",
-    "typescript": "^3.7.5"
+    "tap-spec": "^4.1.1"
   },
   "dependencies": {
     "core-js": "^3.6.4",
