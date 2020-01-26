@@ -1,4 +1,4 @@
-import is from "@redux-saga/is";
+import * as is from "@redux-saga/is";
 import { SAGA_ACTION } from "@redux-saga/symbols";
 import { createStore, Dispatch } from "redux";
 import rootReducer, { effectIds } from "./reducers";
@@ -7,7 +7,8 @@ import {
   EFFECT_RESOLVED,
   EFFECT_REJECTED,
   EFFECT_CANCELLED,
-  ACTION_DISPATCHED
+  ACTION_DISPATCHED,
+  ROOT_SAGA_STARTED
 } from "./constants";
 import { Store } from "redux";
 import { State } from "./types";
@@ -28,7 +29,11 @@ export default function createSagaMonitor({
   if (typeof customDispatch === "function") {
     dispatch = customDispatch;
   } else {
-    store = createStore<State>(rootReducer);
+    store = createStore<State>(
+      rootReducer,
+      window.__REDUX_DEVTOOLS_EXTENSION__ &&
+        window.__REDUX_DEVTOOLS_EXTENSION__()
+    );
     dispatch = store.dispatch;
   }
 
@@ -42,7 +47,7 @@ export default function createSagaMonitor({
 
   function effectResolved(effectId, result) {
     if (is.task(result)) {
-      result.done.then(
+      result.toPromise().then(
         taskResult => {
           if (result.isCancelled()) effectCancelled(effectId);
           else effectResolved(effectId, taskResult);
@@ -97,7 +102,17 @@ export default function createSagaMonitor({
     effectId: number;
     saga: any;
     args: any[];
-  }) {}
+  }) {
+    const { effectId, args, saga } = rootSagaInfo;
+
+    dispatch({
+      type: ROOT_SAGA_STARTED,
+      time: time(),
+      effectId,
+      saga,
+      args
+    });
+  }
 
   return {
     get store() {

@@ -10,7 +10,8 @@ import {
   STATUS_PENDING,
   STATUS_RESOLVED,
   STATUS_REJECTED,
-  STATUS_CANCELLED
+  STATUS_CANCELLED,
+  ROOT_SAGA_STARTED
 } from "./constants";
 
 export const CHILDREN = Symbol("CHILDREN");
@@ -30,8 +31,8 @@ function getPathToEffect(effect, effectsById) {
 }
 
 export function rootEffectIds(state = [], action) {
-  if (action.type === EFFECT_TRIGGERED && action.effect.root) {
-    return [...state, action.effect.effectId];
+  if (action.type === ROOT_SAGA_STARTED) {
+    return [...state, action.effectId];
   }
   return state;
 }
@@ -40,6 +41,8 @@ export function effectIds(state = [], action) {
   switch (action.type) {
     case EFFECT_TRIGGERED:
       return state.concat(action.effect.effectId);
+    case ROOT_SAGA_STARTED:
+      return state.concat(action.effectId);
     default:
       return state;
   }
@@ -48,6 +51,22 @@ export function effectIds(state = [], action) {
 export function effectsById(state = {}, action) {
   let effectId, effect, newState;
   switch (action.type) {
+    case ROOT_SAGA_STARTED:
+      newState = {
+        ...state,
+        [action.effectId]: {
+          effect: {
+            saga: action.saga,
+            args: action.args
+          },
+          time: 0,
+          status: STATUS_PENDING,
+          effectId: action.effectId,
+          path: [action.effectId]
+        }
+      };
+
+      return newState;
     case EFFECT_TRIGGERED:
       effect = action.effect;
       effectId = effect.effectId;

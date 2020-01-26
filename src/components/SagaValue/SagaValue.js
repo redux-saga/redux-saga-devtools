@@ -1,5 +1,5 @@
 import React from "react";
-import is from "@redux-saga/is";
+import * as is from "@redux-saga/is";
 import { CHANNEL_END_TYPE } from "@redux-saga/symbols";
 import JSValue from "../JSValue";
 import SagaRef from "../../containers/SagaRef";
