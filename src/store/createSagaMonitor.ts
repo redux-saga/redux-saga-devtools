@@ -1,6 +1,7 @@
-import { is, SAGA_ACTION } from "redux-saga/utils";
+import is from "@redux-saga/is";
+import { SAGA_ACTION } from "@redux-saga/symbols";
 import { createStore, Dispatch } from "redux";
-import rootReducer from "./reducers";
+import rootReducer, { effectIds } from "./reducers";
 import {
   EFFECT_TRIGGERED,
   EFFECT_RESOLVED,
@@ -92,6 +93,12 @@ export default function createSagaMonitor({
     });
   }
 
+  function rootSagaStarted(rootSagaInfo: {
+    effectId: number;
+    saga: any;
+    args: any[];
+  }) {}
+
   return {
     get store() {
       return store;
@@ -100,6 +107,7 @@ export default function createSagaMonitor({
     effectResolved,
     effectRejected,
     effectCancelled,
-    actionDispatched
+    actionDispatched,
+    rootSagaStarted
   };
 }

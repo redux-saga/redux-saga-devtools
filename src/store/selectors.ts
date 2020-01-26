@@ -1,20 +1,32 @@
-import {} from "redux-saga/effects";
+import {
+  Effect,
+  RootEffect,
+  PutEffect,
+  PutEffectDescriptor,
+  TakeEffect,
+  TakeEffectDescriptor
+} from "redux-saga/effects";
 import { STATUS_RESOLVED } from "./constants";
 import { State } from "./types";
+import is from "@redux-saga/is";
 
 /* eslint-disable no-cond-assign */
 export function getEffectName(state: State, effectId: string) {
   const effect = state.effectsById[effectId].effect;
 
-  if (effect.root) {
+  // TODO
+  if (isRootEffect(effect)) {
     return `${effect.saga.name}`;
   }
 
   let data;
+  if ((data = asPutEffect(effect))) {
+    return `put(${data.channel ? data.action : data.action.type})`;
+  }
+
   if ((data = asEffect.take(effect))) {
     return `take(${data.pattern || "channel"})`;
   } else if ((data = asEffect.put(effect))) {
-    return `put(${data.channel ? data.action : data.action.type})`;
   } else if ((data = asEffect.call(effect))) {
     return `call(${data.fn.name})`;
   } else if ((data = asEffect.cps(effect))) {
@@ -108,4 +120,36 @@ export function matchCurrentAction(state, effectId) {
     asEffect.take(effect.effect) &&
     effect.result === currentAction.action
   );
+}
+
+function isRootEffect(effect: Effect): effect is RootEffect {
+  if ((effect as any).root) {
+    return true;
+  }
+
+  return false;
+}
+
+function asTakeEffect(effect: Effect): TakeEffectDescriptor | undefined {
+  if (isTakeEffect(effect)) {
+    return effect.TAKE;
+  }
+
+  return undefined;
+}
+
+function isTakeEffect(effect: Effect): effect is TakeEffect {
+  return (effect as any)["TAKE"] !== undefined;
+}
+
+function asPutEffect(effect: Effect): PutEffectDescriptor<any> | undefined {
+  if (isPutEffect(effect)) {
+    return effect.PUT;
+  }
+
+  return undefined;
+}
+
+function isPutEffect(effect: Effect): effect is PutEffect<any> {
+  return effect["PUT"] !== undefined;
 }

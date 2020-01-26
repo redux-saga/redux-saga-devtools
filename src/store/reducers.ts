@@ -1,4 +1,4 @@
-import { asEffect } from "redux-saga/utils";
+import asEffect from "./asEffect";
 import { combineReducers } from "redux";
 import {
   EFFECT_TRIGGERED,
