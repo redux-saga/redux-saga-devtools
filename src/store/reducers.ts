@@ -1,4 +1,3 @@
-import asEffect from "./asEffect";
 import { combineReducers } from "redux";
 import {
   EFFECT_TRIGGERED,
@@ -59,7 +58,7 @@ export function effectsById(state = {}, action) {
             saga: action.saga,
             args: action.args
           },
-          time: 0,
+          start: action.time,
           status: STATUS_PENDING,
           effectId: action.effectId,
           path: [action.effectId]
@@ -88,7 +87,7 @@ export function effectsById(state = {}, action) {
         it's only there so the maybeSetRaceWinner could access race's children
       **/
       const parent = state[effect.parentEffectId];
-      if (parent && asEffect.race(parent.effect)) {
+      if (parent && effect.type === "RACE") {
         parent[CHILDREN].push(effect);
       }
       return newState;
@@ -156,7 +155,7 @@ export function effectsByParentId(state = {}, action) {
 }
 
 function maybeSetRaceWinner(effect, result, state) {
-  if (asEffect.race(effect.effect)) {
+  if (effect.type === "RACE") {
     const label = Object.keys(result)[0];
     const children = effect[CHILDREN];
     for (var i = 0; i < children.length; i++) {

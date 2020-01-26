@@ -1,11 +1,7 @@
-import { asEffect, SAGA_ACTION } from "redux-saga/utils";
+import { SAGA_ACTION } from "@redux-saga/symbols";
 import createSagaMonitor from "../createSagaMonitor";
 import { CHILDREN } from "../reducers";
 import * as c from "../constants";
-
-asEffect.race = eff => {
-  return eff.race;
-};
 
 const getEffectId = eff => eff.effectId;
 
@@ -14,8 +10,8 @@ test("reducers", () => {
   const monitor = createSagaMonitor({ time: () => currentTime });
 
   const time_root = (currentTime = 0);
-  const rootEffect = { effectId: "0", root: true, effect: {} };
-  monitor.effectTriggered(rootEffect);
+  const rootEffect = { saga: undefined, args: [], effectId: "0" };
+  monitor.rootSagaStarted(rootEffect);
 
   const time_1 = (currentTime = 1);
   const effect_1 = {
@@ -75,7 +71,11 @@ test("reducers", () => {
   let effect = { ...state.effectsById[rootEffect.effectId] };
   delete effect[CHILDREN];
   expect(effect).toEqual({
-    ...rootEffect,
+    effect: {
+      saga: rootEffect.saga,
+      args: rootEffect.args
+    },
+    effectId: rootEffect.effectId,
     status: c.STATUS_PENDING,
     start: time_root,
     path: [rootEffect.effectId]
